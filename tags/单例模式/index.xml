@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>单例模式 - 标签 - Micro Share Hub</title>
+        <link>https://imicrocode.github.io/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
+        <description>单例模式 - 标签 - Micro Share Hub</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 29 Mar 2021 22:36:32 &#43;0800</lastBuildDate><atom:link href="https://imicrocode.github.io/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" rel="self" type="application/rss+xml" /><item>
+    <title>单例工厂模式</title>
+    <link>https://imicrocode.github.io/singleton-factory/</link>
+    <pubDate>Mon, 29 Mar 2021 22:36:32 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://imicrocode.github.io/singleton-factory/</guid>
+    <description><![CDATA[<p><strong>单例工厂模式</strong>确保一个类只有一个实例, 并提供一个全局访问点。</p>]]></description>
+</item>
+</channel>
+</rss>

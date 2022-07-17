@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Kafka初识之架构之美 - Micro Share Hub</title><meta name="Description" content="Personal Tech Share"><meta property="og:title" content="Kafka初识之架构之美" />
+<meta property="og:description" content="[Kafka]^(分布式事件流处理平台)是一个开源的分布式事件流平台，被数千家公司用于高性能数组管道、流分析、数据集成和任务关键型应用程序。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://imicrocode.github.io/en/kafka-introduction/" /><meta property="og:image" content="https://imicrocode.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-10T13:51:44+08:00" />
+<meta property="article:modified_time" content="2022-07-16T19:57:50+08:00" /><meta property="og:site_name" content="Micro Share Hub" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://imicrocode.github.io/logo.png"/>
+
+<meta name="twitter:title" content="Kafka初识之架构之美"/>
+<meta name="twitter:description" content="[Kafka]^(分布式事件流处理平台)是一个开源的分布式事件流平台，被数千家公司用于高性能数组管道、流分析、数据集成和任务关键型应用程序。"/>
+<meta name="application-name" content="Micro Share Hub">
+<meta name="apple-mobile-web-app-title" content="Micro Share Hub"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="https://imicrocode.github.io/en/kafka-introduction/" /><link rel="prev" href="https://imicrocode.github.io/en/kafka-build/" /><link rel="next" href="https://imicrocode.github.io/en/design-principles/" /><link rel="stylesheet" href="/css/style.min.aa50cdc73e517ee6c5499843fbb5c4713cae79fc2800fc3fd1dea0b8d0e420f3.css" integrity="sha256-qlDNxz5RfubFSZhD+7XEcTyuefwoAPw/0d6guNDkIPM="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Kafka初识之架构之美",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/imicrocode.github.io\/en\/kafka-introduction\/"
+        },"image": ["https:\/\/imicrocode.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "kafka, mq","wordcount":  3719 ,
+        "url": "https:\/\/imicrocode.github.io\/en\/kafka-introduction\/","datePublished": "2021-04-10T13:51:44+08:00","dateModified": "2022-07-16T19:57:50+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "imicrocode","logo": "https:\/\/imicrocode.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "imicrocode"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/en/" title="Micro Share Hub"><span class="header-title-pre"><i class='fas fa-seedling' aria-hidden='true'></i></span>Micro Share Hub</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/en/" title="Home"><i class='fa-solid fa-house'></i> Home </a><a class="menu-item" href="/en/posts/" title="Posts"><i class='fas fa-archive'></i> Posts </a><a class="menu-item" href="/en/tags/" title="Tags"><i class='fas fa-tags'></i> Tags </a><a class="menu-item" href="/en/categories/" title="Categories"><i class='fa-solid fa-list'></i> Categories </a><a class="menu-item" href="/en/about/" title="About"><i class='fas fa-user-circle'></i> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/kafka-introduction/">简体中文</option><option value="/en/kafka-introduction/" selected>English</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/en/" title="Micro Share Hub"><span class="header-title-pre"><i class='fas fa-seedling' aria-hidden='true'></i></span>Micro Share Hub</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/en/" title="Home"><i class='fa-solid fa-house'></i>Home</a><a class="menu-item" href="/en/posts/" title="Posts"><i class='fas fa-archive'></i>Posts</a><a class="menu-item" href="/en/tags/" title="Tags"><i class='fas fa-tags'></i>Tags</a><a class="menu-item" href="/en/categories/" title="Categories"><i class='fa-solid fa-list'></i>Categories</a><a class="menu-item" href="/en/about/" title="About"><i class='fas fa-user-circle'></i>About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/kafka-introduction/">简体中文</option><option value="/en/kafka-introduction/" selected>English</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Kafka初识之架构之美</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/en/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>imicrocode</a></span>&nbsp;<span class="post-category">included in <a href="/en/categories/kafka/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>kafka</a>&nbsp;<a href="/en/categories/distributed/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>distributed</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2021-04-10">2021-04-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3719 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;<span id="/en/kafka-introduction/" class="leancloud_visitors" data-flag-title="Kafka初识之架构之美">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#kafka的使用场景">Kafka的使用场景</a></li>
+    <li><a href="#kafka基本术语介绍">Kafka基本术语介绍</a></li>
+    <li><a href="#kafka架构拓扑图">Kafka架构拓扑图</a></li>
+    <li><a href="#kafka架构初识">Kafka架构初识</a>
+      <ul>
+        <li><a href="#topic--partition--segment">Topic &amp; Partition &amp; Segment</a></li>
+        <li><a href="#pull-vs-push">Pull vs Push</a></li>
+        <li><a href="#replica机制">Replica机制</a></li>
+        <li><a href="#isr--hw--leo">ISR &amp; HW &amp; LEO</a></li>
+      </ul>
+    </li>
+    <li><a href="#producer">Producer</a></li>
+    <li><a href="#consumer">Consumer</a>
+      <ul>
+        <li><a href="#提交offset">提交offset</a></li>
+      </ul>
+    </li>
+    <li><a href="#结语">结语</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><a href="https://kafka.apache.org" target="_blank" rel="noopener noreffer "><strong><ruby>Kafka<rt>分布式事件流处理平台</rt></ruby></strong></a>是一个开源的分布式事件流平台，被数千家公司用于高性能数组管道、流分析、数据集成和任务关键型应用程序。</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Kafka是什么？<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Apache Kafka is an open-source distributed event streaming platform used by thousands of companies for high-performance data pipelines, streaming analytics, data integration, and mission-critical applications.</div>
+        </div>
+    </div>
+<h2 id="kafka的使用场景">Kafka的使用场景</h2>
+<ul>
+<li>
+<p><strong>消息系统(Messaging)</strong></p>
+</li>
+<li>
+<p><strong>网站活动跟踪(Website Activity Tracking)</strong></p>
+</li>
+<li>
+<p><strong>数据指标(Metrics)</strong></p>
+</li>
+<li>
+<p><strong>日志聚合(Log Aggregation)</strong></p>
+</li>
+<li>
+<p><strong>流处理(Stream Processing)</strong></p>
+</li>
+<li>
+<p><strong>事件驱动(Event Sourcing)</strong></p>
+</li>
+<li>
+<p><strong>日志存储(Commit Log)</strong></p>
+</li>
+</ul>
+<p>以上信息源自官网, 详见: <a href="https://kafka.apache.org/uses" target="_blank" rel="noopener noreffer ">Kafka Use Cases</a></p>
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>Warning<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>本文对Kafka的分析均源自分布式消息系统的场景下</strong></div>
+        </div>
+    </div>
+<h2 id="kafka基本术语介绍">Kafka基本术语介绍</h2>
+<ul>
+<li>
+<p><strong><code>Broker</code></strong></p>
+<blockquote>
+<p>一个单独的<code>Kafka server</code>就是一个<code>Broker</code>，kafka集群由多个<code>Broker</code>组成</p>
+</blockquote>
+</li>
+<li>
+<p><strong><code>Producer</code></strong></p>
+<blockquote>
+<p>生产者，主要工作是往<code>Broker</code>发送(<code>push</code>)消息</p>
+</blockquote>
+</li>
+<li>
+<p><strong><code>Consumer</code></strong></p>
+<blockquote>
+<p>消费者，主要工作是从<code>Broker</code>拉取(<code>pull</code>)消息</p>
+</blockquote>
+</li>
+<li>
+<p><strong><code>Topic</code></strong></p>
+<blockquote>
+<p>主题，存储消息的逻辑概念。可以理解为<code>rabbitMQ</code>中的<code>queue</code></p>
+</blockquote>
+</li>
+<li>
+<p><strong><code>Partition</code></strong></p>
+<blockquote>
+<p>分区，每个<code>Topic</code>可以划分成多个分区</p>
+</blockquote>
+</li>
+<li>
+<p><strong><code>Log</code></strong></p>
+<blockquote>
+<p>分区上存储数据的日志文件，生产者将消息写入分区时，实际上就是写入对应的<code>Log</code>中</p>
+</blockquote>
+</li>
+<li>
+<p><strong><code>Segment</code></strong></p>
+<blockquote>
+<p>段，<code>Partition</code>里的<code>log文件</code>会划分成多个段</p>
+</blockquote>
+</li>
+<li>
+<p><strong><code>Consumer Group</code></strong></p>
+<blockquote>
+<p><code>Kafka</code>中多个<code>Consumer</code>组成一个<code>Consumer Group</code>，一个<code>Consumer</code>必须只能属于一个<code>Consumer Group</code></p>
+</blockquote>
+</li>
+<li>
+<p><strong><code>Replica</code></strong></p>
+<blockquote>
+<p>副本，<code>Kafka</code>实现高可用的机制，每个<code>Topic</code>至少有一个副本</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="kafka架构拓扑图">Kafka架构拓扑图</h2>
+<figure><a class="lightgallery" href="/en/kafka-introduction/kafka-architecture-diagram.jpg" title="/en/kafka-introduction/kafka-architecture-diagram.jpg" data-thumbnail="/en/kafka-introduction/kafka-architecture-diagram.jpg" data-sub-html="<h2>Kafka Architecture-Diagram</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/en/kafka-introduction/kafka-architecture-diagram.jpg"
+            data-srcset="/en/kafka-introduction/kafka-architecture-diagram.jpg, /en/kafka-introduction/kafka-architecture-diagram.jpg 1.5x, /en/kafka-introduction/kafka-architecture-diagram.jpg 2x"
+            data-sizes="auto"
+            alt="/en/kafka-introduction/kafka-architecture-diagram.jpg" width="1521" height="1356" />
+    </a><figcaption class="image-caption">Kafka Architecture-Diagram</figcaption>
+    </figure>
+<h2 id="kafka架构初识">Kafka架构初识</h2>
+<blockquote>
+<p><code>Kafka</code>作为分布式消息中间件，可以很好的替代传统的消息系统。与大多数消息系统相比，具有更好的吞吐量、内置分区、复制和容错能力，这使它在大规模数据应用场景有着明显的性能优势。</p>
+</blockquote>
+<p>最简单的消息系统一般都会包含：生产者<code>producer</code>、消费者<code>consumer</code>、队列<code>queue</code>。如下图所示，仅存一个队列的情况下，生产者先向队列里投递消息，然后消费者再从队列里消费消息。</p>
+<figure><a class="lightgallery" href="/en/kafka-introduction/mq-queue.jpg" title="/en/kafka-introduction/mq-queue.jpg" data-thumbnail="/en/kafka-introduction/mq-queue.jpg" data-sub-html="<h2>MQ Queue</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/en/kafka-introduction/mq-queue.jpg"
+            data-srcset="/en/kafka-introduction/mq-queue.jpg, /en/kafka-introduction/mq-queue.jpg 1.5x, /en/kafka-introduction/mq-queue.jpg 2x"
+            data-sizes="auto"
+            alt="/en/kafka-introduction/mq-queue.jpg" width="1195" height="168" />
+    </a><figcaption class="image-caption">MQ Queue</figcaption>
+    </figure>
+<p>先不谈<code>Kafka</code>的架构如何，单就上图最简单的场景，如果要提高效率，该怎么做？</p>
+<p>在解答这个问题之前，先考虑一下以上mq模型存在哪些缺点：</p>
+<ul>
+<li>随着消息量增大，当<code>queue</code>承载的数据量过大时，影响读写性能，同时<code>queue</code>服务也可能宕机</li>
+<li>当有多个消费者同时消费同一队列里的数据时，需要保证消息分配正确及维护消费位移，而这个过程也是非常耗性能的</li>
+<li>当生产者发送消息的速度比消费者消费消息的速度快时，<code>queue</code>服务一直向消费者<code>push</code>消息，消费者可能承受不了压力而宕机</li>
+</ul>
+<p>要解决以上问题，通过数据分块、多线程的方式可以缓解，但治标不治本。那么来看看<code>Kafka</code>是如何解决的吧。</p>
+<h3 id="topic--partition--segment">Topic &amp; Partition &amp; Segment</h3>
+<p>顾名思义，主题。<code>Kafka</code>存储消息的逻辑概念，可以简单理解为上面所说的<code>queue</code>。生产者负责向<code>Topic</code>里<code>send</code>消息，消费者负责从<code>Topic</code>里<code>pull</code>消息然后处理。</p>
+<p>为了解决一个<code>Topic</code>里的数据文件过大导致的读写性能问题，<code>Kafka</code>将其划分为多个<code>Partition</code>。如下图所示：<figure><a class="lightgallery" href="/en/kafka-introduction/topic-partition.jpg" title="/en/kafka-introduction/topic-partition.jpg" data-thumbnail="/en/kafka-introduction/topic-partition.jpg" data-sub-html="<h2>Topic &amp; Partition</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/en/kafka-introduction/topic-partition.jpg"
+            data-srcset="/en/kafka-introduction/topic-partition.jpg, /en/kafka-introduction/topic-partition.jpg 1.5x, /en/kafka-introduction/topic-partition.jpg 2x"
+            data-sizes="auto"
+            alt="/en/kafka-introduction/topic-partition.jpg" width="670" height="850" />
+    </a><figcaption class="image-caption">Topic &amp; Partition</figcaption>
+    </figure></p>
+<p>生产者发送消息的时候会按照策略，将消息发送至不同的<code>Partition</code>,发往每个<code>Partiton</code>里的消息会在分区内对应一个偏移量<code>offset</code>且均从<code>0</code>开始依次递增。<code>Kafka</code>保证一个<code>Partiton</code>内的消息是有序的，但无法保证一个<code>Topic</code>内数据的顺序性。如下图所示：<figure><a class="lightgallery" href="/en/kafka-introduction/partition.jpg" title="/en/kafka-introduction/partition.jpg" data-thumbnail="/en/kafka-introduction/partition.jpg" data-sub-html="<h2>Partition</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/en/kafka-introduction/partition.jpg"
+            data-srcset="/en/kafka-introduction/partition.jpg, /en/kafka-introduction/partition.jpg 1.5x, /en/kafka-introduction/partition.jpg 2x"
+            data-sizes="auto"
+            alt="/en/kafka-introduction/partition.jpg" width="1246" height="516" />
+    </a><figcaption class="image-caption">Partition</figcaption>
+    </figure></p>
+<p>虽然将<code>Topic</code>划分多个<code>Partition</code>可以避免数据过于集中导致的问题，但当<code>Partition</code>中数据过大的时候还是会影响读写性能。因此<code>Kafka</code>再将<code>Partition</code>在物理层面下，通过文件大小、时间等策略细分多段<code>segment</code>，当该段文件大小或时间满足要求，则生成下一段文件数据，每段下均有其对应的索引文件来加速查询。而数据写入的方式则是顺序磁盘IO及文件追加写的形式。</p>
+<h3 id="pull-vs-push">Pull vs Push</h3>
+<p>首先考虑的一个问题，消费者是应该从<code>Broker</code>那里获取数据，还是<code>Broker</code>应该将数据推给消费者</p>
+<ul>
+<li><strong><code>push</code></strong>: 当生产者发送消息的速度比消费者消费消息的速度快时，<code>Broker</code>服务一直向消费者<code>push</code>消息，消费者可能承受不了压力而宕机。但这样的好处是，<code>Broker</code>不容易积压消息。</li>
+<li><strong><code>pull</code></strong>: 当生产者发送消息的速度比消费者消费消息的速度快时，消费者只是消费落后，后面可能赶上。消息积压在<code>Broker</code>上</li>
+</ul>
+<h3 id="replica机制">Replica机制</h3>
+<p>在分布式系统中，高可用是一个避不开的问题，而<code>Kafka</code>则是通过副本机制实现高可用。</p>
+<p>创建<code>Topic</code>时可以指定副本数(至少一个副本)。当创建一个<code>Topic</code>，指定3个分区和3个副本。这样每个分区都有3个副本，<code>Kafka</code>根据一定策略，选出每个分区里的<code>leader</code>和<code>follower</code>，然后尽力确保每个分区的<code>leader</code>落在不同的<code>Broker</code>上。当有<code>Broker</code>宕机的时候，就会触发<strong>分区副本选举机制</strong>，选举出新的<code>leader</code>。如下图所示：<figure><a class="lightgallery" href="/en/kafka-introduction/broker.jpg" title="/en/kafka-introduction/broker.jpg" data-thumbnail="/en/kafka-introduction/broker.jpg" data-sub-html="<h2>Broker</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/en/kafka-introduction/broker.jpg"
+            data-srcset="/en/kafka-introduction/broker.jpg, /en/kafka-introduction/broker.jpg 1.5x, /en/kafka-introduction/broker.jpg 2x"
+            data-sizes="auto"
+            alt="/en/kafka-introduction/broker.jpg" width="1345" height="799" />
+    </a><figcaption class="image-caption">Broker</figcaption>
+    </figure></p>
+<h3 id="isr--hw--leo">ISR &amp; HW &amp; LEO</h3>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>AR、ISR、OSR是什么？<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p><strong>AR(Assigned Replicas)</strong>: 分区中的所有副本</p>
+<p><strong>ISR(In-Sync Replicas)</strong>: 所有与<code>leader</code>副本保持一定程度同步的副本</p>
+<p><strong>OSR(Out-of-Sync Replicas)</strong>: 与<code>leader</code>副本同步滞后过多的副本</p>
+<p>由此可见，<strong>AR = ISR + OSR</strong></p>
+<p><code>leader</code>副本负责维护和跟踪 <strong><code>ISR</code></strong> 集合中所有<code>follower</code>副本的滞后状态，当<code>follower</code>副本落后太多或失效时，<code>leader</code>副本会把它从 <strong><code>ISR</code></strong> 集合中剔除。如果 <strong><code>OSR</code></strong> 集合中有<code>follower</code>副本追上了<code>leader</code>副本，那么<code>leader</code>副本会把它从 <strong><code>OSR</code></strong> 集合转移至 <strong><code>ISR</code></strong> 集合。默认情况下，当<code>leader</code>副本发生故障时，只有 <strong><code>ISR</code></strong> 集合里的副本才有资格选举为新的<code>leader</code></p>
+</div>
+        </div>
+    </div>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>HW、LEO是什么？<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p><strong>HW(High Watermark)</strong>: 高水位，它标识了一个特定的消息偏移量<code>offset</code>，消费者只能拉取到这个<code>offset</code>之前的消息</p>
+<p><strong>LEO(Log End Offset)</strong>: 它标识当前日志文件中下一条待写入消息的<code>offset</code></p>
+</div>
+        </div>
+    </div>
+<figure><a class="lightgallery" href="/en/kafka-introduction/partition-hw-leo.jpg" title="/en/kafka-introduction/partition-hw-leo.jpg" data-thumbnail="/en/kafka-introduction/partition-hw-leo.jpg" data-sub-html="<h2>Partition HW LEO</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/en/kafka-introduction/partition-hw-leo.jpg"
+            data-srcset="/en/kafka-introduction/partition-hw-leo.jpg, /en/kafka-introduction/partition-hw-leo.jpg 1.5x, /en/kafka-introduction/partition-hw-leo.jpg 2x"
+            data-sizes="auto"
+            alt="/en/kafka-introduction/partition-hw-leo.jpg" width="1398" height="1851" />
+    </a><figcaption class="image-caption">Partition HW LEO</figcaption>
+    </figure>
+<blockquote>
+<p>由此可见，<code>Kafka</code>的复制机制既不是完全的同步复制，也不是单纯的异步复制。</p>
+<p>事实上，同步复制要求所有能工作的<code>follower</code>副本都复制完，这条消息才会被确认为已成功提交，这种复制方式极大的影响了性能。而异步复制的方式下，<code>follower</code>副本异步的从<code>leader</code>副本中复制数据，数据只要被<code>leader</code>副本写入就被认为已经提交成功。在这种情况下，如果<code>follower</code>副本都落后<code>leader</code>副本，突然<code>leader</code>副本宕机，则会造成数据丢失。</p>
+<p><strong><code>Kafka</code>使用的这种<code>ISR</code>的方式则有效的权衡了数据可靠性和性能之间的关系。</strong></p>
+</blockquote>
+<h2 id="producer">Producer</h2>
+<p>主要工作是向<code>Topic</code>发送消息。但由于副本机制，生产者发送消息怎么样算发送成功呢？<strong>在一般的分布式系统中一般采用过半提交的方式确保，既一半以上的副本确认成功才算消息提交成功，但<code>Kafka</code>中并未提供这种机制。</strong><code>Kafka</code>可以通过以下参数配置保障：</p>
+<ol>
+<li>
+<p><code>Producer</code>提供配置<code>acks</code>参数</p>
+<ul>
+<li><strong><code>acks=0</code></strong> 生产者只要将消息发送出去，无需等待任何副本的确认，即算发送成功。<strong>此方式吞吐量最大、性能最好，但kafka服务抖动时容易丢消息</strong></li>
+<li><strong><code>acks=1</code></strong> <strong>默认</strong>。生产者将消息发送出去，只需副本中的<code>leader</code>确认，即算发送成功。<strong>此方式吞吐量和性能优秀，但当<code>leader</code>挂时会造成小部分消息丢失</strong></li>
+<li><strong><code>acks=all</code></strong> 生产者将消息发送出去，需要<code>ISR</code>中的副本全部确认，即算发送成功。<strong>此方式吞吐量和性能差，但稳定性最高，消息不容易丢失</strong></li>
+</ul>
+</li>
+<li>
+<p><code>Broker</code> 提供配置<code>replica.lag.time.max.ms</code>参数</p>
+<p>如果一个<code>follower</code>没有发送任何<code>fetch</code>请求，或者至少在这段时间内没有消耗到<code>leaders</code>日志结束偏移量，那么<code>leader</code>将从 <strong><code>ISR</code></strong> 中删除<code>follower</code></p>
+</li>
+</ol>
+<h2 id="consumer">Consumer</h2>
+<p>在<code>Kafka</code>中，1个<code>Partition</code>只能被1个消费线程消费。消费线程主动<code>pull</code>数据，而非<code>Kafka Server</code>主动<code>push</code>数据，这样消费者可以根据自己的消费能力消费数据。如果有消息堆积，也方便开发人员对消费者及时管理。</p>
+<p>如果消费线程大于分区数，则多余的消费线程将空闲；如果消费线程小于分区数，则有部分消费线程将消费多个分区的数据；如果消费线程等于分区数，则刚刚好一个消费线程对应一个分区，这也是最理想的情况。</p>
+<p>这样做的好处是<code>offset</code>偏移量方便管理且简单，消费数据的分配及提交<code>offset</code>无需事务保障，也提高了效率。</p>
+<figure><a class="lightgallery" href="/en/kafka-introduction/partion-consumer.jpg" title="/en/kafka-introduction/partion-consumer.jpg" data-thumbnail="/en/kafka-introduction/partion-consumer.jpg" data-sub-html="<h2>Partition Consumer</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/en/kafka-introduction/partion-consumer.jpg"
+            data-srcset="/en/kafka-introduction/partion-consumer.jpg, /en/kafka-introduction/partion-consumer.jpg 1.5x, /en/kafka-introduction/partion-consumer.jpg 2x"
+            data-sizes="auto"
+            alt="/en/kafka-introduction/partion-consumer.jpg" width="945" height="1584" />
+    </a><figcaption class="image-caption">Partition Consumer</figcaption>
+    </figure>
+<h3 id="提交offset">提交offset</h3>
+<p>由于消费者是主动<code>pull</code>数据，因此每个分区的<code>offset</code>由对应的消费者线程维护，每个消费线程需要记录消费到当前分区的偏移量<code>offset</code>。</p>
+<p>在早起<code>Kafka</code>的版本中，每个分区的<code>offset</code>由对应的消费线程维护在<code>zk</code>上。但由于<code>zookeeper</code>的单节点写的特性(只有<code>leader</code>才能处理写请求)，所以<code>zookeeper</code>不适合大量数据的频繁写。</p>
+<p>之后在<code>Kafka</code>的版本中，每个分区的<code>offset</code>由对应的消费线程维护在<code>__consumer_offset</code>主题中。</p>
+<h2 id="结语">结语</h2>
+<p>以上就是<code>Kafka</code>在整个架构之美的其中一部分，设计还是相当巧妙的。当然涉及到<code>Kafka</code>的东西还有很多。</p>
+<p>比如，<code>Kafka</code>在之后版本中逐步在降低对<code>zookeeper</code>的依赖。例如<strong>分区副本的选举</strong>，在之前的版本中，都是依赖<code>zookeeper</code>操作的。但如果<code>Broker</code>上的<code>Topic</code>过多，一旦<code>Broker</code>宕机将会触发大量<code>Watcher</code>事件，从而引起<strong>惊群效应</strong>，会导致<strong>巨大的服务器性能消耗和网络冲击</strong>。因为<code>zookeeper</code>的特性，<code>Kafka</code>选择将各种选举机制都依靠自己解决。</p>
+<p><code>Kafka</code>值得考究、学习和思考的地方还有很多，之后会一一整理分享出来。</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-07-16&nbsp;<a class="git-hash" href="https://github.com/imicrocode/blog/commit/8ea8b70c9de40fe1c22ce17954e5a90d3fb33b48" target="_blank" title="commit by imicrocode(imicrocode@outlook.com) 8ea8b70c9de40fe1c22ce17954e5a90d3fb33b48: init website">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>8ea8b70</a></span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/en/kafka-introduction/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imicrocode.github.io/en/kafka-introduction/" data-title="Kafka初识之架构之美" data-hashtags="kafka,mq"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imicrocode.github.io/en/kafka-introduction/" data-hashtag="kafka"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://imicrocode.github.io/en/kafka-introduction/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imicrocode.github.io/en/kafka-introduction/" data-title="Kafka初识之架构之美"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Douban" style="display:inline-block;" data-sharer="douban" data-url="https://imicrocode.github.io/en/kafka-introduction/"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/douban.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on QQ" style="display:inline-block;" data-sharer="qq" data-url="https://imicrocode.github.io/en/kafka-introduction/"><i class="fab fa-qq fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Qzone" style="display:inline-block;" data-sharer="qzone" data-url="https://imicrocode.github.io/en/kafka-introduction/"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/qzone.svg" aria-hidden="true"></i></a><a title="Share on Qrcode" class="qrcode-container" style="display:inline-block;"><i class="fas fa-qrcode fa-fw" aria-hidden="true"></i><canvas id="qrcode-img"></canvas>
+        </a><script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+
+<script>
+    QRCode.toCanvas(document.getElementById('qrcode-img'),'https:\/\/imicrocode.github.io\/en\/kafka-introduction\/', function (error) {
+        if (error) console.error(error)
+        console.log('qrcode success!');
+    })
+</script></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/en/tags/kafka/">kafka</a>,&nbsp;<a href="/en/tags/mq/">mq</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/en/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/en/kafka-build/" class="prev" rel="prev" title="Kafka集群搭建(伪集群)"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Kafka集群搭建(伪集群)</a>
+            <a href="/en/design-principles/" class="next" rel="next" title="七大软件设计原则">七大软件设计原则<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a rel="license external nofollow noopener noreferrer" href="https://gohugo.io/" target="_blank">Hugo</a> | Theme is <a rel="license external nofollow noopener noreferrer" href="https://github.com/dillonzq/LoveIt" target="_blank"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2020 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/en/" target="_blank">imicrocode</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.fill%2CArray.prototype.find%2CArray.from%2CIntersectionObserver%2CMath.sign%2CObject.assign%2CPromise%2CObject.entries%2Chtml5shiv%2CObject.values%2Cfetch%2CElement.prototype.after"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/object-fit-images@3.2.4/dist/ofi.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="/mysharer.33f2b1b6bad11da28f7830e16d80967a99bdadf09fa3d77097452c1fdbd5f1f3.js" integrity="sha256-M/KxtrrRHaKPeDDhbYCWepm9rfCfo9dwl0UsH9vV8fM="></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":-1},"comment":{"valine":{"appId":"D8FYuqneRdnmrMALWupb3RBl-MdYXbMMI","appKey":"5lBp9j27Jpd7TWwis5IdKpy6","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://d8fyuqne.api.lncldglobal.com","visitor":true}},"lightgallery":true,"search":{"highlightTag":"em","lunrIndexURL":"/en/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.9e0af26d07ef470e0d850462fcb087fccb1971e3f2978405eceab01351a2028b.js" integrity="sha256-ngrybQfvRw4NhQRi/LCH/MsZcePyl4QF7OqwE1GiAos="></script></body>
+</html>

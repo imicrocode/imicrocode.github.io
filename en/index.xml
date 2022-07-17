@@ -1,0 +1,67 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Micro Share Hub</title>
+        <link>https://imicrocode.github.io/en/</link>
+        <description>Personal Tech Share</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 01 Jul 2021 22:36:39 &#43;0800</lastBuildDate>
+            <atom:link href="https://imicrocode.github.io/en/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>七大软件设计原则</title>
+    <link>https://imicrocode.github.io/en/design-principles/</link>
+    <pubDate>Thu, 01 Jul 2021 22:36:39 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://imicrocode.github.io/en/design-principles/</guid>
+    <description><![CDATA[<p>在软件开发中，我们或多或少知道一些经典的设计原则。<strong>保持对原则的警醒比应用了多少原则更重要</strong>。</p>]]></description>
+</item>
+<item>
+    <title>Kafka初识之架构之美</title>
+    <link>https://imicrocode.github.io/en/kafka-introduction/</link>
+    <pubDate>Sat, 10 Apr 2021 13:51:44 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://imicrocode.github.io/en/kafka-introduction/</guid>
+    <description><![CDATA[<p><a href="https://kafka.apache.org" target="_blank" rel="noopener noreffer "><strong><ruby>Kafka<rt>分布式事件流处理平台</rt></ruby></strong></a>是一个开源的分布式事件流平台，被数千家公司用于高性能数组管道、流分析、数据集成和任务关键型应用程序。</p>]]></description>
+</item>
+<item>
+    <title>Kafka集群搭建(伪集群)</title>
+    <link>https://imicrocode.github.io/en/kafka-build/</link>
+    <pubDate>Sat, 10 Apr 2021 11:03:12 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://imicrocode.github.io/en/kafka-build/</guid>
+    <description><![CDATA[<p><a href="https://kafka.apache.org" target="_blank" rel="noopener noreffer "><strong><ruby>Kafka<rt>分布式事件流处理平台</rt></ruby></strong></a></p>
+<p>本文将介绍kafka伪集群的搭建。</p>]]></description>
+</item>
+<item>
+    <title>Zookeeper集群搭建(伪集群)</title>
+    <link>https://imicrocode.github.io/en/zookeeper-build/</link>
+    <pubDate>Sat, 10 Apr 2021 08:40:08 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://imicrocode.github.io/en/zookeeper-build/</guid>
+    <description><![CDATA[<p><a href="https://zookeeper.apache.org" target="_blank" rel="noopener noreffer "><strong><ruby>Zookeeper<rt>分布式协调组件</rt></ruby></strong></a></p>
+<p>本文将介绍zookeeper伪集群的搭建。</p>]]></description>
+</item>
+<item>
+    <title>单例工厂模式</title>
+    <link>https://imicrocode.github.io/en/singleton-factory/</link>
+    <pubDate>Mon, 29 Mar 2021 22:36:32 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://imicrocode.github.io/en/singleton-factory/</guid>
+    <description><![CDATA[<p><strong>单例工厂模式</strong>确保一个类只有一个实例, 并提供一个全局访问点。</p>]]></description>
+</item>
+<item>
+    <title>Mongo内嵌数组按条件查询指定字段中的记录</title>
+    <link>https://imicrocode.github.io/en/mongo-aggregation/</link>
+    <pubDate>Sat, 12 Dec 2020 16:37:49 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://imicrocode.github.io/en/mongo-aggregation/</guid>
+    <description><![CDATA[<p>由于之前对mongo缺乏了解，在工作中，遇到了返回特定字段的内嵌查询场景，因此记录下此场景下的解决方案。</p>]]></description>
+</item>
+<item>
+    <title>Git常用命令整理</title>
+    <link>https://imicrocode.github.io/en/git-common-commands/</link>
+    <pubDate>Wed, 25 Nov 2020 21:32:35 &#43;0800</pubDate>
+    <author>imicrocode</author>
+    <guid>https://imicrocode.github.io/en/git-common-commands/</guid>
+    <description><![CDATA[<p>Git常用命令整理.</p>]]></description>
+</item>
+</channel>
+</rss>
