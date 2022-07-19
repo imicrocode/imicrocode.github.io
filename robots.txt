@@ -61,4 +61,4 @@ Disallow: /
 User-agent: ZoominfoBot
 Disallow: /
 
-Sitemap: https://imicrocode.github.io/sitemap.xml
+Sitemap: https://imicrocode.com/sitemap.xml

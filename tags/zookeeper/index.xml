@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>zookeeper - 标签 - Micro Share Hub</title>
-        <link>https://imicrocode.github.io/tags/zookeeper/</link>
+        <link>https://imicrocode.com/tags/zookeeper/</link>
         <description>zookeeper - 标签 - Micro Share Hub</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 10 Apr 2021 08:40:08 &#43;0800</lastBuildDate><atom:link href="https://imicrocode.github.io/tags/zookeeper/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 10 Apr 2021 08:40:08 &#43;0800</lastBuildDate><atom:link href="https://imicrocode.com/tags/zookeeper/" rel="self" type="application/rss+xml" /><item>
     <title>Zookeeper集群搭建(伪集群)</title>
-    <link>https://imicrocode.github.io/zookeeper-build/</link>
+    <link>https://imicrocode.com/zookeeper-build/</link>
     <pubDate>Sat, 10 Apr 2021 08:40:08 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://imicrocode.github.io/zookeeper-build/</guid>
+    <guid>https://imicrocode.com/zookeeper-build/</guid>
     <description><![CDATA[<p><a href="https://zookeeper.apache.org" target="_blank" rel="noopener noreffer "><strong><ruby>Zookeeper<rt>分布式协调组件</rt></ruby></strong></a></p>
 <p>本文将介绍zookeeper伪集群的搭建。</p>]]></description>
 </item>

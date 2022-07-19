@@ -1,22 +1,22 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>设计模式 - 标签 - Micro Share Hub</title>
-        <link>https://imicrocode.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+        <link>https://imicrocode.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
         <description>设计模式 - 标签 - Micro Share Hub</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 01 Jul 2021 22:36:39 &#43;0800</lastBuildDate><atom:link href="https://imicrocode.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 01 Jul 2021 22:36:39 &#43;0800</lastBuildDate><atom:link href="https://imicrocode.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="self" type="application/rss+xml" /><item>
     <title>七大软件设计原则</title>
-    <link>https://imicrocode.github.io/design-principles/</link>
+    <link>https://imicrocode.com/design-principles/</link>
     <pubDate>Thu, 01 Jul 2021 22:36:39 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://imicrocode.github.io/design-principles/</guid>
+    <guid>https://imicrocode.com/design-principles/</guid>
     <description><![CDATA[<p>在软件开发中，我们或多或少知道一些经典的设计原则。<strong>保持对原则的警醒比应用了多少原则更重要</strong>。</p>]]></description>
 </item>
 <item>
     <title>单例工厂模式</title>
-    <link>https://imicrocode.github.io/singleton-factory/</link>
+    <link>https://imicrocode.com/singleton-factory/</link>
     <pubDate>Mon, 29 Mar 2021 22:36:32 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://imicrocode.github.io/singleton-factory/</guid>
+    <guid>https://imicrocode.com/singleton-factory/</guid>
     <description><![CDATA[<p><strong>单例工厂模式</strong>确保一个类只有一个实例, 并提供一个全局访问点。</p>]]></description>
 </item>
 </channel>
