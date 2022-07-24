@@ -2,7 +2,7 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://imicrocode.com/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/</loc><lastmod>2022-07-24T18:42:31&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/"
@@ -11,7 +11,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/"
                     /></url><url>
-            <loc>https://imicrocode.com/design-principles/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/design-principles/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/design-principles/"
@@ -20,7 +20,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/design-principles/"
                     /></url><url>
-            <loc>https://imicrocode.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc><lastmod>2022-07-24T18:42:31&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"
@@ -29,7 +29,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"
                     /></url><url>
-            <loc>https://imicrocode.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc><lastmod>2022-07-24T18:42:31&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"
@@ -38,7 +38,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"
                     /></url><url>
-            <loc>https://imicrocode.com/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/"
@@ -47,7 +47,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/"
                     /></url><url>
-            <loc>https://imicrocode.com/categories/distributed/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/categories/distributed/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/categories/distributed/"
@@ -56,7 +56,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/categories/distributed/"
                     /></url><url>
-            <loc>https://imicrocode.com/tags/kafka/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/tags/kafka/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/tags/kafka/"
@@ -65,7 +65,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/tags/kafka/"
                     /></url><url>
-            <loc>https://imicrocode.com/categories/kafka/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/categories/kafka/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/categories/kafka/"
@@ -74,7 +74,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/categories/kafka/"
                     /></url><url>
-            <loc>https://imicrocode.com/kafka-introduction/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/kafka-introduction/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/kafka-introduction/"
@@ -83,7 +83,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/kafka-introduction/"
                     /></url><url>
-            <loc>https://imicrocode.com/tags/mq/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/tags/mq/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/tags/mq/"
@@ -92,7 +92,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/tags/mq/"
                     /></url><url>
-            <loc>https://imicrocode.com/kafka-build/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/kafka-build/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/kafka-build/"
@@ -101,7 +101,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/kafka-build/"
                     /></url><url>
-            <loc>https://imicrocode.com/tags/zookeeper/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/tags/zookeeper/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/tags/zookeeper/"
@@ -110,7 +110,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/tags/zookeeper/"
                     /></url><url>
-            <loc>https://imicrocode.com/categories/zookeeper/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/categories/zookeeper/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/categories/zookeeper/"
@@ -119,7 +119,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/categories/zookeeper/"
                     /></url><url>
-            <loc>https://imicrocode.com/zookeeper-build/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/zookeeper-build/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/zookeeper-build/"
@@ -128,7 +128,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/zookeeper-build/"
                     /></url><url>
-            <loc>https://imicrocode.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E5%8D%8F%E8%B0%83%E7%BB%84%E4%BB%B6/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E5%8D%8F%E8%B0%83%E7%BB%84%E4%BB%B6/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E5%8D%8F%E8%B0%83%E7%BB%84%E4%BB%B6/"
@@ -137,7 +137,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E5%8D%8F%E8%B0%83%E7%BB%84%E4%BB%B6/"
                     /></url><url>
-            <loc>https://imicrocode.com/tags/%E5%8D%95%E4%BE%8B%E5%B7%A5%E5%8E%82/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/tags/%E5%8D%95%E4%BE%8B%E5%B7%A5%E5%8E%82/</loc><lastmod>2022-07-24T18:42:31&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/tags/%E5%8D%95%E4%BE%8B%E5%B7%A5%E5%8E%82/"
@@ -146,7 +146,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/tags/%E5%8D%95%E4%BE%8B%E5%B7%A5%E5%8E%82/"
                     /></url><url>
-            <loc>https://imicrocode.com/singleton-factory/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/singleton-factory/</loc><lastmod>2022-07-24T18:42:31&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/singleton-factory/"
@@ -155,7 +155,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/singleton-factory/"
                     /></url><url>
-            <loc>https://imicrocode.com/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</loc><lastmod>2022-07-24T18:42:31&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"
@@ -164,7 +164,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"
                     /></url><url>
-            <loc>https://imicrocode.com/tags/mongo/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/tags/mongo/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/tags/mongo/"
@@ -173,7 +173,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/tags/mongo/"
                     /></url><url>
-            <loc>https://imicrocode.com/mongo-aggregation/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/mongo-aggregation/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/mongo-aggregation/"
@@ -182,7 +182,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/mongo-aggregation/"
                     /></url><url>
-            <loc>https://imicrocode.com/categories/%E5%B7%A5%E4%BD%9C%E5%B0%8F%E6%9C%AD/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/categories/%E5%B7%A5%E4%BD%9C%E5%B0%8F%E6%9C%AD/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/categories/%E5%B7%A5%E4%BD%9C%E5%B0%8F%E6%9C%AD/"
@@ -191,7 +191,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/categories/%E5%B7%A5%E4%BD%9C%E5%B0%8F%E6%9C%AD/"
                     /></url><url>
-            <loc>https://imicrocode.com/categories/commands/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/categories/commands/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/categories/commands/"
@@ -200,7 +200,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/categories/commands/"
                     /></url><url>
-            <loc>https://imicrocode.com/tags/git/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/tags/git/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/tags/git/"
@@ -209,7 +209,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/tags/git/"
                     /></url><url>
-            <loc>https://imicrocode.com/git-common-commands/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/git-common-commands/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/git-common-commands/"
@@ -218,7 +218,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/git-common-commands/"
                     /></url><url>
-            <loc>https://imicrocode.com/tags/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/tags/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/tags/"
@@ -227,7 +227,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/tags/"
                     /></url><url>
-            <loc>https://imicrocode.com/categories/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/categories/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/categories/"
@@ -236,7 +236,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/categories/"
                     /></url><url>
-            <loc>https://imicrocode.com/about/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/about/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/about/"
@@ -245,7 +245,7 @@
                     hreflang="zh-cn"
                     href="https://imicrocode.com/about/"
                     /></url><url>
-            <loc>https://imicrocode.com/posts/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://imicrocode.com/posts/</loc><lastmod>2022-07-16T19:57:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://imicrocode.com/en/posts/"

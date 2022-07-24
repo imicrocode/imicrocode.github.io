@@ -312,23 +312,89 @@ public class StaticInner implements Serializable {
 ```java
 /**
  * 最完美的单例工厂模型
+ *      和饿汉式单例类似，虽然写法优雅，线程安全，但可能在某些情况下造成内存浪费
+ *      而且枚举不支持反射构造，不够灵活
  */
 public enum EnumSingleton {
 
     INSTANCE;
 
-    private final Object instance;
+    private final Object object;
 
     EnumSingleton() {
-        instance = new Object();
-    };
+        object = new Object();
+    }
 
-    public Object getInstance() {
-        return instance;
+    public Object getObject() {
+        return object;
     }
 
 }
 ```
+
+以上枚举式单例写法，和饿汉式单例类似，虽然写法优雅，线程安全，但可能在某些情况下造成内存浪费，没有延迟加载的特点。而且，如果绕过该方法，可以直接new Object()会破坏单例。因此一般将枚举写成内部枚举类。
+
+```java
+
+public class SingletonExample {
+
+    private SingletonExample() {
+
+    }
+
+    public static SingletonExample getInstance() {
+        return EnumSingleton.INSTANCE.getInstance();
+    }
+
+    private enum EnumSingleton {
+
+        INSTANCE;
+
+        private final SingletonExample singletonExample;
+
+
+        EnumSingleton() {
+            singletonExample = new SingletonExample();
+        }
+
+        public SingletonExample getInstance() {
+            return singletonExample;
+        }
+
+    }
+
+}
+
+```
+
+### 6.3 注册式单例
+
+```java
+
+/**
+ * spring ioc容器采用的单例实现方式(待补充线实现程安全方式)
+ */
+public class ContainerSingleton {
+
+    private ContainerSingleton() {
+
+    }
+
+    private static final Map<String, Object> ioc = new ConcurrentHashMap<>();
+
+    public static Object getObject(String className) throws Exception {
+        if (ioc.containsKey(className)) {
+            return ioc.get(className);
+        }
+        Object instance = Class.forName(className).getDeclaredConstructor().newInstance();
+        ioc.put(className, instance);
+        return instance;
+    }
+
+}
+
+```
+
 ## 7 单例工厂模式总结
 |                | 饿汉模式 | 懒汉模式 | 加锁懒汉模式 | 双重锁检查 | 静态内部类 | 枚举 |
 | -------------- | -------- | -------- | ------------ | ---------- | ---------- | ---- |
